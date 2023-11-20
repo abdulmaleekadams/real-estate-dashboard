@@ -4,6 +4,8 @@ import type { NextRequest } from 'next/server';
 // This function can be marked `async` if using `await` inside
 export function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
+  console.log(pathname);
+  
 
   const isPublicPath =
     pathname === '/account/login' || pathname === '/account/signup';
@@ -19,5 +21,5 @@ export function middleware(req: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ['/'],
+  matcher: ['/', '/account/login', '/account/signup'],
 };

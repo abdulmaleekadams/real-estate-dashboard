@@ -5,6 +5,9 @@ interface IUser extends Document {
   password: string;
 }
 
+// Clear all Mongoose models
+mongoose.models = {};
+
 const userSchema: Schema<IUser> = new Schema(
   {
     email: {

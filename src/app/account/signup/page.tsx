@@ -9,6 +9,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ChangeEvent, useState } from 'react';
 import clsx from 'clsx';
+import axios, { AxiosResponse } from 'axios';
+import { useRouter } from 'next/navigation';
+
 
 const Signup = () => {
   const [formDetails, setFormDetails] = useState({
@@ -16,6 +19,7 @@ const Signup = () => {
     password: '',
     confirmPassword: '',
   });
+  const [errorMessage, seterrorMessage] = useState('');
 
   const formInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormDetails({
@@ -23,16 +27,33 @@ const Signup = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const router = useRouter()
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      seterrorMessage('');
+      const response: AxiosResponse = await axios.post(
+        '/api/account/signup',
+        formDetails
+      );
+      console.log(response.data);
+      router.push('/');
+    } catch (error: any) {
+      seterrorMessage(error.response ? error.response.data.data : '');
+    }
+  };
   return (
     <div className={clsx('container flex justifyContentCenter ', styles.login)}>
-      <div className='maxWidth720 flex flexColumn rowGap3 '>
+      <div className={clsx('flex flexColumn rowGap3 ', styles.formContainer)}>
         <div className={styles.formHeader}>
           <h1 className='textCenter heading'>Join us</h1>
           <p className='textCenter lh1 mt1 fw400 textGrey'>
             Create an account! Please enter your details
           </p>
         </div>
-        <form className='flex flexColumn rowGap2'>
+        <form onSubmit={handleFormSubmit} className='flex flexColumn rowGap2'>
           <div>
             <Input
               labelName='Email'
@@ -59,6 +80,7 @@ const Signup = () => {
               value={formDetails.confirmPassword}
               onChangeHandler={formInputChange}
             />
+            <p className='error'>{errorMessage}</p>
           </div>
           <Button buttonTitle={'Sign up'} buttonStyle='fill' />
           <Button

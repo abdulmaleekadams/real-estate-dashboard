@@ -9,12 +9,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ChangeEvent, useState } from 'react';
 import clsx from 'clsx';
+import axios, { AxiosResponse } from 'axios';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
   const [formDetails, setFormDetails] = useState({
     email: '',
     password: '',
   });
+  const [errorMessage, seterrorMessage] = useState('');
 
   const formInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormDetails({
@@ -22,16 +25,32 @@ const Login = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const router = useRouter();
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      seterrorMessage('');
+      const response: AxiosResponse = await axios.post(
+        '/api/account/signin',
+        formDetails
+      );
+      router.push('/');
+    } catch (error: any) {
+      seterrorMessage(error.response ? error.response.data.data : '');
+    }
+  };
   return (
     <div className={clsx('container flex justifyContentCenter ', styles.login)}>
-      <div className='maxWidth720 flex flexColumn rowGap3 '>
+      <div className={clsx('flex flexColumn rowGap3 ', styles.formContainer)}>
         <div className={styles.formHeader}>
           <h1 className='textCenter heading'>Welcome back</h1>
           <p className='textCenter lh1 mt1 fw400 textGrey'>
             Welcome back! Please enter your details
           </p>
         </div>
-        <form className='flex flexColumn rowGap2'>
+        <form onSubmit={handleFormSubmit} className='flex flexColumn rowGap2'>
           <div>
             <Input
               labelName='Email'
@@ -55,6 +74,7 @@ const Login = () => {
             >
               Forgot Password
             </Link>
+            <p className='error'>{errorMessage}</p>
           </div>
           <Button buttonTitle={'Sign in'} buttonStyle='fill' />
           <Button

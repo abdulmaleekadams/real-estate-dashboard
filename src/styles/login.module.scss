@@ -7,10 +7,23 @@
     padding-block: 0;
     padding-right: 0;
 
-    .formHeader{
-        *{
-            text-align: left;
-        }
+    .formHeader {
+      * {
+        text-align: left;
+      }
+    }
+  }
+
+  .formContainer {
+    width: 300px;
+    @include mdScreen{
+      width: 400px; 
+    }
+    @include lgScreen{
+      width: 500px;
+    }
+    @include xlScreen {
+      width: 350px;
     }
   }
   .image {

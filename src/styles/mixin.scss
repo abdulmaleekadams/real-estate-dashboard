@@ -8,7 +8,7 @@
     @content;
   }
 }
-@mixin tablet {
+@mixin mdScreen {
   @media (min-width: 577px) {
     @content;
   }
