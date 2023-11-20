@@ -1,0 +1,123 @@
+@import 'colors';
+
+@mixin mobile {
+  @media (max-width: 995px) {
+    @content;
+  }
+}
+@mixin mobileSm {
+  @media (max-width: 350px) {
+    @content;
+  }
+}
+.flex {
+  display: flex;
+}
+
+.flexColumn {
+  flex-direction: column;
+}
+
+.justifyContentCenter {
+  justify-content: center;
+}
+
+.alignItemsCenter {
+  align-items: center;
+}
+
+.rowGap2 {
+  row-gap: 1.25rem;
+}
+
+.rowGap3 {
+  row-gap: 2rem;
+}
+
+// Padding
+
+.py1 {
+  padding-block: 0.68rem;
+}
+
+// Text
+
+.textCenter {
+  text-align: center;
+}
+
+.textBlue {
+  color: $primary-color;
+}
+
+.textGrey {
+  color: $grey-dark;
+}
+
+.textRight {
+  text-align: right;
+}
+
+.lh1 {
+  line-height: 1.5;
+}
+
+.heading {
+  font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 50.54px;
+}
+
+// Font
+.fw400 {
+  font-weight: 400;
+}
+
+// Button
+.btn {
+  border-radius: 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+  column-gap: 10px;
+}
+
+.btnFill {
+  background-color: $primary-color;
+}
+
+.btnOutline {
+  background: transparent;
+  border: 1px solid $divider;
+}
+
+.block {
+  display: block;
+}
+
+// margin
+.mb1 {
+  margin-bottom: 1rem;
+}
+.mt1 {
+  margin-top: 0.68rem;
+}
+.mt2 {
+  margin-top: 1.5rem;
+}
+.ml1 {
+  margin-left: 0.68rem;
+}
+
+.container {
+  padding: 6rem;
+  width: 100%;
+  max-width: 1400px;
+
+  @include mobile() {
+    padding: 6rem 1.5rem 2rem;
+  }
+
+  @include mobileSm() {
+    padding-inline: 1rem;
+  }
+}

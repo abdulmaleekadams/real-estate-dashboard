@@ -1,0 +1,25 @@
+@import 'mixin';
+.login {
+  @include xlScreen {
+    column-gap: 3rem;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 0;
+    padding-right: 0;
+
+    .formHeader{
+        *{
+            text-align: left;
+        }
+    }
+  }
+  .image {
+    flex: 1;
+    height: 960px;
+    max-width: 720px;
+    position: relative;
+    @include lgScreen {
+      display: none;
+    }
+  }
+}
