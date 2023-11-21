@@ -12,7 +12,6 @@ import clsx from 'clsx';
 import axios, { AxiosResponse } from 'axios';
 import { useRouter } from 'next/navigation';
 
-
 const Signup = () => {
   const [formDetails, setFormDetails] = useState({
     email: '',
@@ -28,7 +27,7 @@ const Signup = () => {
     });
   };
 
-  const router = useRouter()
+  const router = useRouter();
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

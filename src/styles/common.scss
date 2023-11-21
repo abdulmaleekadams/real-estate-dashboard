@@ -1,15 +1,6 @@
 @import 'colors';
+@import 'mixin';
 
-@mixin mobile {
-  @media (max-width: 995px) {
-    @content;
-  }
-}
-@mixin mobileSm {
-  @media (max-width: 350px) {
-    @content;
-  }
-}
 .flex {
   display: flex;
 }
@@ -22,8 +13,16 @@
   justify-content: center;
 }
 
+.justifyContentBetween{
+  justify-content: space-between;
+}
+
 .alignItemsCenter {
   align-items: center;
+}
+
+.rowGap1{
+  row-gap: 0.68rem;
 }
 
 .rowGap2 {
@@ -108,16 +107,29 @@
   margin-left: 0.68rem;
 }
 
+// width
+.fw{
+  width: 100%;
+}
+
 .container {
   padding: 6rem;
   width: 100%;
   max-width: 1400px;
 
-  @include mobile() {
+  @include xlScreen {
     padding: 6rem 1.5rem 2rem;
   }
 
-  @include mobileSm() {
+  @include lgScreen {
+    padding-inline: 3rem;
+  }
+
+  @include mdScreen {
+    padding-inline: 1.5rem;
+  }
+
+  @include smScreen{
     padding-inline: 1rem;
   }
 }

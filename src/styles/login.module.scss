@@ -16,14 +16,14 @@
 
   .formContainer {
     width: 300px;
-    @include mdScreen{
-      width: 400px; 
-    }
-    @include lgScreen{
-      width: 500px;
-    }
     @include xlScreen {
       width: 350px;
+    }
+    @include lgScreen {
+      width: 500px;
+    }
+    @include mdScreen {
+      width: 400px;
     }
   }
   .image {

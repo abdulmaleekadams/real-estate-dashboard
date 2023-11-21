@@ -1,0 +1,148 @@
+@import '../../styles/colors';
+@import '../../styles/mixin';
+
+.navbarContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $black;
+  z-index: 3;
+}
+.navbar {
+  padding-block: 1rem !important;
+  position: relative;
+
+  .col1,
+  .col2 {
+    column-gap: 1rem;
+  }
+
+  .col1 {
+    .menu {
+      svg {
+        font-size: 1.8rem;
+      }
+
+      @include xlScreen {
+        display: none;
+      }
+    }
+    .searchForm {
+      display: flex;
+
+      input {
+        display: none;
+      }
+      svg {
+        font-size: 1.4rem;
+        color: $grey-dark;
+      }
+      @include xlScreen {
+        position: relative;
+        width: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        button {
+          position: absolute;
+          left: 10px;
+          top: 10px;
+          svg {
+            font-size: 1rem;
+          }
+        }
+        input {
+          display: block;
+          width: 100%;
+          padding: 10px;
+          padding-inline: 2.5rem 1rem;
+          border-radius: 10px;
+          background: $bg-dark;
+          &:focus {
+            border: 1px solid $divider;
+          }
+        }
+      }
+    }
+  }
+
+  .col2 {
+    position: relative;
+    .notification {
+      svg {
+        font-size: 1.6rem;
+        color: $grey-dark;
+      }
+    }
+    .profileImage {
+      position: relative;
+      height: 40px;
+      width: 40px;
+      background: $grey-dark;
+      border-radius: 50%;
+    }
+  }
+
+  .profileOptions {
+    right: 0;
+    width: 200px;
+    padding-block: 20px;
+    padding-inline: 20px 35px;
+    filter: drop-shadow(0 3px 4px #111111);
+    row-gap: 30px;
+    border-radius: 10px;
+
+    .setting svg {
+      transform: scale(1.17);
+    }
+  }
+
+  .profileOptions,
+  .menuContainer {
+    position: absolute;
+    background: $black;
+    top: 75px;
+    right: 1rem;
+    transform: translateY(-100px);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease-in-out, opacity 0.4s 0.1s ease-in-out;
+
+    &.open {
+      visibility: visible !important;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .menuContainer {
+    position: fixed;
+    width: 100%;
+    height: max-content;
+    left: 0;
+    top: 65px;
+    padding: 1rem;
+
+    a {
+      padding: 1rem 1.5rem;
+      transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+      &:hover,
+      &.active {
+        color: $white;
+        background-color: $primary-color;
+      }
+    }
+
+    @include xlScreen {
+      transform: unset;
+      visibility: visible;
+      opacity: 1;
+      height: 100vh;
+      width: 250px;
+    }
+  }
+
+  @include xlScreen {
+    padding-left: 270px;
+  }
+}

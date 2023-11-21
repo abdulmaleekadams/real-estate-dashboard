@@ -1,0 +1,16 @@
+@import '../../../styles/colors';
+.pieCard {
+
+    .details{
+
+        .title{
+            color: $grey;
+        }
+
+        .value{
+            font-weight: 700;
+            line-height: 1.5;
+            font-size: 1.5rem;
+        }
+    }
+}
