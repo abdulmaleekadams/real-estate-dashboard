@@ -1,6 +1,9 @@
 import { PropertyCardProps } from '@/interfaces/property';
 import Image from 'next/image';
 
+import styles from './latestSalesProp.module.scss';
+import clsx from 'clsx';
+
 const LatestSalesProp = ({
   photo,
   location,
@@ -9,15 +12,15 @@ const LatestSalesProp = ({
   id,
 }: PropertyCardProps) => {
   return (
-    <div className='flex alignItemsCenter' id={id}>
+    <div className={clsx('flex alignItemsCenter', styles.latestProps)} id={id}>
       <Image src={photo} width={60} height={55} alt={title} />
 
-      <div className='flex justifyContentBetween fw'>
-        <div className='fw'>
-          <p className='pText'>{title}</p>
-          <p className='textGrey'>{location}</p>
+      <div className={clsx('flex justifyContentBetween fw', styles.details)}>
+        <div className={clsx('fw', styles.about)}>
+          <p className={clsx('pText', styles.title)}>{title}</p>
+          <p className={clsx('textGrey', styles.location)}>{location}</p>
         </div>
-        <p className='textBlue'>+${price}</p>
+        <p className={clsx('textBlue', styles.price)}>+${price}</p>
       </div>
     </div>
   );

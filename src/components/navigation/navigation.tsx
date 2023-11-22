@@ -18,7 +18,8 @@ import {
   MdOutlineGroup,
   MdOutlineMessage,
 } from 'react-icons/md';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import axios from 'axios';
 
 const Navigation = () => {
   const [openProfileOption, setOpenProfileOption] = useState(false);
@@ -36,6 +37,14 @@ const Navigation = () => {
   };
 
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    const response = await axios.post('/api/account/logout');
+    console.log(response.data);
+
+    router.refresh();
+  };
 
   return (
     <nav
@@ -103,6 +112,7 @@ const Navigation = () => {
             text='Logout'
             icon={<IoLogOut />}
             customClass={styles.setting}
+            handleClick={handleLogout}
           />
           <IconText
             elementTag='button'
@@ -123,7 +133,7 @@ const Navigation = () => {
             text='Dashboard'
             icon={<MdOutlineDashboard />}
             href='/'
-            customClass={pathname === '/' ? styles.active : ''}
+            customClass={pathname === '/dashboard' ? styles.active : ''}
           />
           <IconText
             text='Property'

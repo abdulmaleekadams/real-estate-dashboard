@@ -5,7 +5,6 @@ import type { NextRequest } from 'next/server';
 export function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
   console.log(pathname);
-  
 
   const isPublicPath =
     pathname === '/account/login' || pathname === '/account/signup';
@@ -21,5 +20,5 @@ export function middleware(req: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ['/', '/account/login', '/account/signup'],
+  matcher: ['/', '/account/login', '/account/signup', '/dashboard'],
 };

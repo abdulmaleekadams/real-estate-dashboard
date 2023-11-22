@@ -1,0 +1,23 @@
+.latestProps{
+column-gap: 10px;
+img{
+    border-radius: 7px;
+}
+    .details{
+        .about{
+            .title{
+                font-weight: 600;
+                margin-bottom: 2px;
+
+            }
+
+            .location{
+                font-size: 1.05rem;
+            }
+        }
+        .price{
+            font-weight: 600;
+            font-size: 20px;
+        }
+    }
+}

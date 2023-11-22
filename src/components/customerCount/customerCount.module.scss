@@ -7,9 +7,13 @@
             color: #2ED480;
             // font-size: ;
         }
+        .amount{
+            font-weight: 600;
+            font-size: 26px;
+        }
     }
     .areaChart{
-        width: 250px;
-        max-width: 250px;
+        width: max-content;
+        max-width: max-content;
     }
 }

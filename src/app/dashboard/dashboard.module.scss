@@ -1,0 +1,103 @@
+@import '../../styles/mixin';
+@import '../../styles/colors';
+
+.pieCharts {
+  width: 100%;
+  @include xlScreen {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+}
+
+.topAgentsHeader {
+  a {
+    width: max-content;
+    height: max-content;
+    width: 80px;
+    color: $grey-dark;
+    transition: all 0.5s ease;
+    padding-block: 0.4rem;
+
+    &:hover {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+  }
+}
+
+.revRef {
+  @media screen and (min-width: 1550px) {
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 1rem;
+    .propRefCol {
+      width: max-content;
+    }
+  }
+
+  .propRefCol {
+    min-width: 300px;
+    flex: 1;
+    .refBars {
+      margin-top: 20px;
+    }
+  }
+}
+
+.latestPropsWrapper {
+  row-gap: 2.7rem;
+}
+
+.agntCustSales {
+  width: 100%;
+  @media (width >= 1400px) {
+    .latestSales {
+      width: 40%;
+    }
+
+    .customer {
+      width: 30%;
+    }
+
+    .topAgentsWrapper {
+      width: 30%;
+    }
+  }
+  @media (width <= 1399px) {
+    flex-wrap: wrap;
+    column-gap: unset;
+    justify-content: space-between;
+    .customer {
+      width: 43%;
+      // margin-left: auto;
+    }
+
+    .topAgentsWrapper {
+      width: 55%;
+    }
+    .latestSales {
+      width: 100%;
+    }
+  }
+  @media (width >= 1145px) {
+    flex-direction: row;
+    column-gap: 1rem;
+  }
+
+  @media (width <= 1144px) {
+    >*{
+      width: 100% !important;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .vercelLogo {
+    filter: invert(1);
+  }
+
+  .logo {
+    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
+  }
+}

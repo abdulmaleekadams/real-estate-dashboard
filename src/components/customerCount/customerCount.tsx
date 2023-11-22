@@ -1,9 +1,12 @@
 'use client';
+
 import { ApexOptions } from 'apexcharts';
 import clsx from 'clsx';
 import { useState } from 'react';
-import Chart from 'react-apexcharts';
 import styles from './customerCount.module.scss';
+import dynamic from 'next/dynamic';
+
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 interface CustomerCountProps {
   series: Array<{ x: string; y: number }>;
@@ -46,7 +49,7 @@ const CustomerCount = ({
       },
     },
     fill: {
-      colors: ['#000000'],
+      colors: ['#475be8'],
       type: 'gradient',
     },
     dataLabels: {
@@ -106,7 +109,7 @@ const CustomerCount = ({
         )}
       >
         <div className={clsx('flex flexColumn rowGap2', styles.details)}>
-          <p className='amount'>{total >= 1000 ? total / 1000 + 'k' : total}</p>
+          <p className={styles.amount}>{total >= 1000 ? total / 1000 + 'k' : total}</p>
           <p className={styles.percentage}>{percentage}%</p>
         </div>
         <div className={styles.areaChart}>
@@ -114,6 +117,7 @@ const CustomerCount = ({
             options={options}
             series={options.series}
             height={120}
+            width='116px'
             type='area'
           />
         </div>

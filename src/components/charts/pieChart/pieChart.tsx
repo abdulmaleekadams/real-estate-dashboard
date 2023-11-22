@@ -1,6 +1,6 @@
-'use client';
+'use client'
 import { ApexOptions } from 'apexcharts';
-import Chart from 'react-apexcharts';
+import dynamic from 'next/dynamic'; // Use dynamic import to conditionally load ApexCharts on the client-side
 
 import styles from './pieChart.module.scss';
 import clsx from 'clsx';
@@ -12,7 +12,10 @@ interface PieChartProps {
   colors: Array<string>;
 }
 
-const Piechart = ({ colors, series, title, value }: PieChartProps) => {
+// Conditionally import ApexCharts only on the client-side
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
+
+const PieChart = ({ colors, series, title, value }: PieChartProps) => {
   var options: ApexOptions = {
     chart: {
       type: 'donut',
@@ -28,14 +31,13 @@ const Piechart = ({ colors, series, title, value }: PieChartProps) => {
         donut: {
           size: '50%',
         },
-        
       },
     },
-
     stroke: {
       show: false,
     },
   };
+
   return (
     <div
       className={clsx(
@@ -43,17 +45,13 @@ const Piechart = ({ colors, series, title, value }: PieChartProps) => {
         'card flex justifyContentBetween alignItemsCenter'
       )}
     >
-      <div
-        className={clsx(
-          'flex flexColumn rowGap1',
-          styles.details
-        )}
-      >
+      <div className={clsx('flex flexColumn rowGap1', styles.details)}>
         <p className={styles.title}>{title}</p>
         <p className={styles.value}>{value.toLocaleString()}</p>
       </div>
-      <Chart width='120px' options={options} series={series} type='donut' />
+      <Chart width='100px' height='100px' options={options} series={series} type='donut' />
     </div>
   );
 };
-export default Piechart;
+
+export default PieChart;

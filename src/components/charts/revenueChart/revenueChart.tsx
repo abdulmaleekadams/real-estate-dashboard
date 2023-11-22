@@ -3,8 +3,9 @@ import { SectionTitle } from '@/components';
 
 import styles from './revenueChart.module.scss';
 import { ApexOptions } from 'apexcharts';
-import Chart from 'react-apexcharts';
 import clsx from 'clsx';
+import dynamic from 'next/dynamic';
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 interface revenueChartProps {
   series: Array<{ name: string; data: Array<number> }>;
@@ -19,7 +20,7 @@ const RevenueChart = ({ series }: revenueChartProps) => {
       toolbar: {
         offsetY: -90,
       },
-      background: 'transparent'
+      background: 'transparent',
     },
     plotOptions: {
       bar: {
@@ -116,7 +117,7 @@ const RevenueChart = ({ series }: revenueChartProps) => {
         </div>
       </div>
       <div className={styles.chartContainer}>
-        <Chart options={options} series={series} type='bar' height={250} />
+        <Chart options={options} series={series} type='bar' height={250} width='100%' />
       </div>
     </div>
   );

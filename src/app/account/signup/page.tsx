@@ -38,7 +38,7 @@ const Signup = () => {
         formDetails
       );
       console.log(response.data);
-      router.push('/');
+      router.push('/dashboard');
     } catch (error: any) {
       seterrorMessage(error.response ? error.response.data.data : '');
     }

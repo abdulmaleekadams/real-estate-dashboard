@@ -12,7 +12,7 @@ import clsx from 'clsx';
 import axios, { AxiosResponse } from 'axios';
 import { useRouter } from 'next/navigation';
 
-const Login = () => {
+const Page = () => {
   const [formDetails, setFormDetails] = useState({
     email: '',
     password: '',
@@ -36,7 +36,7 @@ const Login = () => {
         '/api/account/signin',
         formDetails
       );
-      router.push('/');
+      router.push('/dashboard');
     } catch (error: any) {
       seterrorMessage(error.response ? error.response.data.data : '');
     }
@@ -106,4 +106,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Page;
