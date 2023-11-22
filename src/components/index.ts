@@ -3,3 +3,8 @@ export { default as Button } from './button/button';
 export { default as Navbar } from './navigation/navigation';
 export { default as IconText } from './iconText/iconText';
 export { default as Piechart } from './charts/pieChart/pieChart';
+export { default as SectionTitle } from './sectionTitle/sectionTitle';
+export { default as ReferralBar } from './referrrals/referrals';
+export { default as TopAgent } from './agent/agent';
+export { default as CustomerCount } from './customerCount/customerCount';
+export { default as LatestProperty } from './latestSalesProp/latestSalesProp';

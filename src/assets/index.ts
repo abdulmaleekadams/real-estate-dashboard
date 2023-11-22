@@ -3,3 +3,8 @@ export { default as LoginBanner } from '@/assets/images/login.png';
 export { default as Notification } from '@/assets/icons/notification.svg';
 export { default as SearchIcon } from '@/assets/icons/search.svg';
 export { default as Harmburger } from '@/assets/icons/menu.svg';
+export { default as ProfleImg } from '@/assets/images/profile.png';
+export { default as Prop1 } from '@/assets/images/prop1.png';
+export { default as Prop2 } from '@/assets/images/prop2.png';
+export { default as Prop3 } from '@/assets/images/prop3.png';
+export { default as Prop4 } from '@/assets/images/prop4.png';

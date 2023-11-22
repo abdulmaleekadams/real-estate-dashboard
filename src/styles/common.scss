@@ -13,7 +13,7 @@
   justify-content: center;
 }
 
-.justifyContentBetween{
+.justifyContentBetween {
   justify-content: space-between;
 }
 
@@ -21,7 +21,7 @@
   align-items: center;
 }
 
-.rowGap1{
+.rowGap1 {
   row-gap: 0.68rem;
 }
 
@@ -55,6 +55,11 @@
 
 .textRight {
   text-align: right;
+}
+
+.pText {
+  font-size: 1.15rem;
+  line-height: 1.5;
 }
 
 .lh1 {
@@ -108,14 +113,20 @@
 }
 
 // width
-.fw{
+.fw {
   width: 100%;
+}
+
+.sectionTitle {
+  font-size: 1.57rem;
+  font-weight: 600;
+  margin-bottom: 30px;
 }
 
 .container {
   padding: 6rem;
   width: 100%;
-  max-width: 1400px;
+  // max-width: 1400px;
 
   @include xlScreen {
     padding: 6rem 1.5rem 2rem;
@@ -129,7 +140,33 @@
     padding-inline: 1.5rem;
   }
 
-  @include smScreen{
+  @include smScreen {
     padding-inline: 1rem;
   }
+}
+
+.sectionWrapper {
+  background-color: $bg-dark;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.amount {
+  font-size: 2.75rem;
+  font-weight: 700;
+
+  @include lgScreen {
+    font-size: 2.5rem;
+  }
+  @include mdScreen {
+    font-size: rem;
+  }
+
+  @media screen and (max-width: 399px) {
+    font-size: 1.75rem;
+  }
+}
+
+hr{
+  border-color: $grey;
 }

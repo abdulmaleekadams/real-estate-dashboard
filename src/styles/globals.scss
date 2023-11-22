@@ -100,6 +100,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-width: 335px;
   justify-content: center;
   align-items: center;
   @include xlScreen {
@@ -140,14 +141,7 @@ input:-webkit-autofill:active {
   max-width: 720px;
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1rem;
-  @include xlScreen {
-    padding-left: 275px !important;
-  }
-}
+
 
 .card {
   filter: drop-shadow(0 3px 4px #111111);
@@ -156,9 +150,33 @@ main {
   background: $black;
   min-width: 300px;
   @include xlScreen{
-    min-width: 320px;
-    width: 320px;
+    min-width: 310px;
+    width: 310px;
   }
+}
+
+.sectionPadding{
+  padding: 1.7rem 1.375rem;
+}
+
+main {
+  width: 100%;
+  max-width: 1900px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  @include xlScreen {
+    padding-left: 275px !important;
+    padding-right: 1.5rem;
+
+    .container{
+      padding-inline: unset;
+    }
+  }
+}
+
+::-webkit-scrollbar{
+  display: none;
 }
 
 @media (prefers-color-scheme: dark) {

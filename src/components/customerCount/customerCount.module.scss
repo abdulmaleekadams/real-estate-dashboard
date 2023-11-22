@@ -1,0 +1,15 @@
+@import '../../styles/colors';
+
+.customerCount{
+    column-gap: 1rem;
+    .details{
+        .percentage{
+            color: #2ED480;
+            // font-size: ;
+        }
+    }
+    .areaChart{
+        width: 250px;
+        max-width: 250px;
+    }
+}

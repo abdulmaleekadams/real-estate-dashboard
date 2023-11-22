@@ -1,0 +1,23 @@
+@import '../../styles/colors';
+
+.profile {
+  img {
+    border-radius: 20px;
+    margin-right: 1rem;
+  }
+
+  .info {
+    .top {
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+  }
+}
+
+.menuBtn{
+
+    svg{
+        font-size: 1.75rem;
+        color: $grey-dark;
+    }
+}

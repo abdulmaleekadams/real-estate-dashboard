@@ -18,5 +18,5 @@ export interface PropertyCardProps {
   title: string,
   location: string,
   price: string,
-  photo: string,
+  photo: string | any,
 }

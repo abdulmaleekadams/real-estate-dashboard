@@ -1,12 +1,54 @@
 @import '../styles/mixin';
+@import '../styles/colors';
 
-.pieCharts{
+.pieCharts {
   width: 100%;
   @include xlScreen {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
     gap: 25px;
+  }
+}
+
+.topAgentsHeader {
+  a {
+    width: max-content;
+    height: max-content;
+    width: 80px;
+    color: $grey-dark;
+    transition: all 0.5s ease;
+    padding-block: 0.4rem;
+
+    &:hover {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+  }
+}
+
+.revRef {
+  @media screen and (min-width: 1550px) {
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 1rem;
+    .propRefCol {
+      width: max-content;
+    }
+  }
+
+  .propRefCol {
+    min-width: 300px;
+    flex: 1;
+    .refBars {
+      margin-top: 20px;
+    }
+  }
+}
+
+.agntCustSales {
+  @media (width >= 1145px) {
+    flex-direction: row;
+    column-gap: 1rem;
   }
 }
 

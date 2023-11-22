@@ -1,0 +1,20 @@
+.barWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+
+
+  .barContainer {
+    position: relative;
+    height: 8px;
+    width: 100%;
+    border-radius: 4px;
+    background: #333;
+
+    .bar {
+      position: absolute;
+      height: 100%;
+      border-radius: 4px;
+    }
+  }
+}
