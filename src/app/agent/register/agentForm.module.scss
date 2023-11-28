@@ -48,7 +48,7 @@
   }
 
   h2 {
-    padding-top: 50px;
+    padding-top: 100px;
   }
   .button {
     justify-content: flex-end;
@@ -76,6 +76,7 @@
     position: relative;
     // border-width: 1px;
     cursor: pointer;
+    order: 9;
 
     img {
       object-fit: cover;
@@ -92,4 +93,30 @@
   100% {
     opacity: 1;
   }
+}
+
+
+.firstname{
+  order: 1;
+}
+.lastname{
+  order: 2;
+}
+.phone{
+  order: 3;
+}
+.dob{
+  order: 4;
+}
+.email{
+  order:5;
+}
+.gender{
+  order: 6;
+}
+.country{
+  order: 7;
+}
+.properties{
+  order: 8;
 }

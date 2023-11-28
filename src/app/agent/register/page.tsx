@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import axios, { AxiosError } from 'axios';
 import { useDropzone } from 'react-dropzone';
 import { FiUploadCloud } from 'react-icons/fi';
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 
 import styles from './agentForm.module.scss';
@@ -16,6 +16,7 @@ import { AgentsFormBg } from '@/assets';
 
 import countryList from '@/helpers/countriesList.json';
 import { AgentsFormDetails } from '@/helpers/formInput';
+import { validateFormDetails } from '@/helpers/validateFormDetails';
 
 interface AgentFormDetailsProps {
   firstname: string;
@@ -42,28 +43,13 @@ const AgentForm = () => {
     properties: '',
     photo: '',
   });
-
-  const validateForm = () => {
-    const hasError = AgentsFormDetails.some(({ name, pattern }) => {
-      const value = formDetails[name];
-
-      if (pattern && typeof value === 'string') {
-        // Handle pattern validation for fields with a pattern
-        return !pattern.test(value.trim());
-      } else if (typeof value === 'string') {
-        // Handle general string validation (empty or whitespace)
-        return value.trim() === '';
-      } else {
-        // Handle validation for other types (e.g., number)
-        return value === null || value === undefined;
-      }
-    });
-    console.log(hasError);
-
-    setDisabled(hasError);
-  };
-
   const [disabled, setDisabled] = useState(true);
+
+  const validateForm = useCallback(() => {
+    const errorExist = validateFormDetails(formDetails, AgentsFormDetails);
+
+    setDisabled(errorExist);
+  }, [formDetails, setDisabled]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     validateForm();
@@ -80,11 +66,12 @@ const AgentForm = () => {
 
       reader.onload = () => {
         setFormDetails({ ...formDetails, photo: reader.result });
+        validateForm();
       };
 
       reader.readAsDataURL(file);
     },
-    [formDetails, setFormDetails]
+    [formDetails, setFormDetails, validateForm]
   );
 
   const selectCountry = (value: string) => {
@@ -131,6 +118,9 @@ const AgentForm = () => {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    validateForm();
+  }, [formDetails, validateForm]);
   return (
     <main>
       <h1 className='pageHeaderPadding'>Add New Agent</h1>
@@ -192,6 +182,7 @@ const AgentForm = () => {
               handleSelect={selectCountry}
               optionList={countryList}
               headingLabel='Country'
+              clasName={styles.country}
             />
 
             <SelectOption
@@ -206,7 +197,7 @@ const AgentForm = () => {
             />
 
             <div
-              {...getRootProps()}
+              {...getRootProps({})}
               className={clsx(inputStyles.input, styles.dropzone)}
             >
               <input

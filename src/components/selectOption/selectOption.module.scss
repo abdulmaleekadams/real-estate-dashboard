@@ -2,6 +2,9 @@
 .selectContainer {
   position: relative;
 
+  >p{
+    padding-block: 0.57rem !important;
+  }
   .selectOptions {
     height: 500px;
     background: $bg-dark;
