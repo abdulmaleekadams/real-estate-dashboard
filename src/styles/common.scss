@@ -124,12 +124,11 @@
 }
 
 .container {
-  padding: 6rem;
   width: 100%;
   // max-width: 1400px;
 
   @include xlScreen {
-    padding: 6rem 1.5rem 2rem;
+    padding: 0 1.5rem 2rem;
   }
 
   @include lgScreen {
@@ -169,4 +168,12 @@
 
 hr{
   border-color: $grey;
+}
+
+.absolute{
+  position: absolute;
+}
+
+.relative{
+  position: relative;
 }

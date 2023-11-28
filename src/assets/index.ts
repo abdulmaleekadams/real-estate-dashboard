@@ -8,3 +8,5 @@ export { default as Prop1 } from '@/assets/images/prop1.png';
 export { default as Prop2 } from '@/assets/images/prop2.png';
 export { default as Prop3 } from '@/assets/images/prop3.png';
 export { default as Prop4 } from '@/assets/images/prop4.png';
+export { default as AgentsFormBg } from '@/assets/images/agentsBg.png';
+export { default as AgentAvatar } from '@/assets/images/agentAvatar.png';

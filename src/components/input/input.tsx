@@ -1,13 +1,18 @@
+'use client';
 import clsx from 'clsx';
 import styles from '@/styles/input.module.scss';
+import { useState } from 'react';
 
 interface InputProps {
   labelName: string;
   placeholder?: string;
   onChangeHandler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  value?: string;
+  value: string | any;
   name?: string;
   type?: string;
+  errorMessage?: string;
+  pattern?: RegExp;
+  className?: string;
 }
 const Input: React.FC<InputProps> = ({
   labelName,
@@ -16,9 +21,21 @@ const Input: React.FC<InputProps> = ({
   value,
   name,
   type,
+  errorMessage,
+  pattern,
+  className,
 }) => {
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const handleErrorMessage = () => {
+    const patternMatch = pattern?.test(value);
+    patternMatch ? setErrorMsg('') : setErrorMsg(errorMessage!);
+  };
   return (
-    <label htmlFor={name} className={clsx(styles.label, 'flex flexColumn mb1')}>
+    <label
+      htmlFor={name}
+      className={clsx(styles.label, 'flex flexColumn mb1', className)}
+    >
       {labelName}
       <input
         name={name}
@@ -27,7 +44,11 @@ const Input: React.FC<InputProps> = ({
         onChange={onChangeHandler}
         type={type}
         className={styles.input}
+        onKeyDown={handleErrorMessage}
+        onKeyUp={handleErrorMessage}
+        
       />
+      <p className='textBlue'>{errorMsg}</p>
     </label>
   );
 };

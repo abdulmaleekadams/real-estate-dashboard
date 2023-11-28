@@ -1,0 +1,12 @@
+@import '../../styles/colors';
+
+.dropzone{
+    border: 1px solid $divider;
+    width: 100% !important;
+    border-radius: 15px;
+    height: 200px;
+
+    img{
+        border-radius: 50%;
+    }
+}

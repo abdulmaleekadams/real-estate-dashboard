@@ -5,15 +5,17 @@ import Link from 'next/link';
 interface ButtonProps {
   buttonTitle: any;
   onClickHandler?: (
-    event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
+    event:
+      | React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
   ) => void;
   buttonType?: 'button' | 'submit' | 'reset';
   buttonElement?: string | 'button';
   href?: string | any;
   target?: '_blank' | '_parent' | '_top' | '_self';
   buttonStyle?: 'fill' | 'outline';
+  disabled?: boolean;
 }
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
   buttonTitle,
   buttonElement,
   href,
@@ -21,7 +23,8 @@ const Button: React.FC<ButtonProps> = ({
   buttonType,
   onClickHandler,
   buttonStyle,
-}) => {
+  disabled,
+}:ButtonProps) => {
   const classname = buttonStyle === 'fill' ? 'btnFill' : 'btnOutline';
   return buttonElement === 'a' ? (
     href?.includes('https') ? (
@@ -46,7 +49,8 @@ const Button: React.FC<ButtonProps> = ({
     <button
       className={`btn ${classname} py1 flex justifyContentCenter alignItemsCenter`}
       type={buttonType}
-      onClick={onClickHandler}
+        onClick={onClickHandler}
+        disabled={disabled}
     >
       {buttonTitle}
     </button>

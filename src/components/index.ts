@@ -8,3 +8,5 @@ export { default as ReferralBar } from './referrrals/referrals';
 export { default as TopAgent } from './agent/agent';
 export { default as CustomerCount } from './customerCount/customerCount';
 export { default as LatestProperty } from './latestSalesProp/latestSalesProp';
+export { default as ImageUpload } from './imageUpload/imageUpload';
+export { default as SelectOption } from './selectOption/selectOption';

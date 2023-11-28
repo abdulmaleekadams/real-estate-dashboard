@@ -115,14 +115,17 @@ a {
 }
 
 button {
-  all: unset;
   border: none;
   outline: none;
   background: transparent;
   cursor: pointer;
+
+  &:disabled{
+    cursor: not-allowed;
+  }
 }
 
-input{
+input {
   border: 1px solid transparent;
   outline: none;
 }
@@ -141,21 +144,19 @@ input:-webkit-autofill:active {
   max-width: 720px;
 }
 
-
-
 .card {
   filter: drop-shadow(0 3px 4px #111111);
   border-radius: 10px;
   padding: 1.375rem;
   background: $black;
   min-width: 300px;
-  @include xlScreen{
+  @include xlScreen {
     min-width: 310px;
     width: 310px;
   }
 }
 
-.sectionPadding{
+.sectionPadding {
   padding: 1.7rem 1.375rem;
 }
 
@@ -165,17 +166,37 @@ main {
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
+  padding-block: 100px 2rem;
   @include xlScreen {
     padding-left: 275px !important;
     padding-right: 1.5rem;
 
-    .container{
+    .container {
       padding-inline: unset;
     }
   }
 }
 
-::-webkit-scrollbar{
+.pageHeaderPadding {
+  padding-bottom: 1.5rem;
+  @include xlScreen {
+    padding-inline: 0;
+  }
+
+  @include lgScreen {
+    padding-inline: 3rem;
+  }
+
+  @include mdScreen {
+    padding-inline: 1.5rem;
+  }
+
+  @include smScreen {
+    padding-inline: 1rem;
+  }
+}
+
+::-webkit-scrollbar {
   display: none;
 }
 

@@ -43,6 +43,7 @@ const Navigation = () => {
     const response = await axios.post('/api/account/logout');
     console.log(response.data);
 
+    router.push('/account/login');
     router.refresh();
   };
 
@@ -132,20 +133,20 @@ const Navigation = () => {
           <IconText
             text='Dashboard'
             icon={<MdOutlineDashboard />}
-            href='/'
-            customClass={pathname === '/dashboard' ? styles.active : ''}
+            href='/dashboard'
+            customClass={pathname.startsWith('/dashboard') ? styles.active : ''}
           />
           <IconText
             text='Property'
             icon={<RiBuilding2Line />}
             href='/property'
-            customClass={pathname === '/property' ? styles.active : ''}
+            customClass={pathname.startsWith('/property') ? styles.active : ''}
           />
           <IconText
             text='Agent'
             icon={<MdOutlineGroup />}
             href='/agent'
-            customClass={pathname === '/agent' ? styles.active : ''}
+            customClass={pathname.startsWith('/agent') ? styles.active : ''}
           />
 
           <IconText
@@ -158,7 +159,7 @@ const Navigation = () => {
             text='Profile'
             icon={<MdOutlineAccountCircle />}
             href='/profile'
-            customClass={pathname === '/profile' ? styles.active : ''}
+            customClass={pathname.startsWith('/profile') ? styles.active : ''}
           />
         </div>
       </div>

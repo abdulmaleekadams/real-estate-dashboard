@@ -1,10 +1,10 @@
- import styles from './dashboard.module.scss';
+import styles from './dashboard.module.scss';
 import {
   Button,
   CustomerCount,
   LatestProperty,
   Piechart,
-  ReferralBar,  
+  ReferralBar,
   SectionTitle,
   TopAgent,
 } from '@/components';
@@ -32,7 +32,7 @@ export default function Home() {
   ];
   return (
     <main className={styles.main}>
-      <h1>Dashboard</h1>
+      <h1 className='pageHeaderPadding'>Dashboard</h1>
 
       <div
         className={clsx(
@@ -159,7 +159,10 @@ export default function Home() {
         </div>
 
         <div
-          className={clsx('sectionWrapper sectionPadding fw', styles.latestSales)}
+          className={clsx(
+            'sectionWrapper sectionPadding fw',
+            styles.latestSales
+          )}
         >
           <div className='flex justifyContentBetween'>
             <SectionTitle sectionTitle='Latest Sales' />
